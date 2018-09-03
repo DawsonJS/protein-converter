@@ -38,23 +38,31 @@ print(dna_sequence)
 print("\nConverting to complimentary sequence...")
 rna_sequence = [conversions[dna_sequence[0]]]
 base_number = 1
+
 for i in range(len(dna_sequence) - 1):
     rna_sequence.append(conversions[dna_sequence[base_number]])
-    base_number = base_number + 1
+    base_number += 1
 
 number = int(len(rna_sequence)/3 - 1)
 number_2 = 3
 
 for i in range(number):
-	rna_sequence.insert(number_2," ")
-	number_2 = number_2 + 4
+    rna_sequence.insert(number_2, " ")
+    number_2 += 4
 
-print(rna_sequence)
+number = 1
+rna_sequence2 = rna_sequence[0]
+for i in range(len(rna_sequence) - 1):
+    rna_sequence2 += rna_sequence[number]
+    number += 1
+
+rna_sequence = rna_sequence2
 rna_sequence = rna_sequence.split(" ")
 
 protein = [amino_acids[rna_sequence[0]]]
 protein_number = 1
 for i in range(len(rna_sequence) - 1):
-	protein.append(amino_acids[rna_sequence[protein_number]])
-	protein_number = protein_number + 1
+    protein.append(amino_acids[rna_sequence[protein_number]])
+    protein_number = protein_number + 1
+
 print('; '.join(protein))
